@@ -23,6 +23,7 @@ Route::get('app/' , function(){
 
 Route::get('login' , function(){
 
+//    dump($_SERVER);
 //    dump(app_path('Http/user_functions.php'));
 //    assets('');
 
