@@ -21,11 +21,16 @@ Route::get('app/' , function(){
     dump('Hello World ! 123 ');
 });
 
-Route::group(['prefix'=>'admin'] , function(){
+Route::get('login' , function(){
 
-    Route::get('/' , function(){
-        dump('Hello World !');
-    });
+//    dump(app_path('Http/user_functions.php'));
+//    assets('');
 
+    return view('admin/login/login');
+});
+
+Route::group(['prefix'=>'admin' , 'middleware'=>'login'] , function(){
+
+    Route::get('/' , function(){});
 
 });

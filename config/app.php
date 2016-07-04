@@ -156,6 +156,11 @@ return [
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
 
+        /*
+         * 框架无关 ， 用户自行定义的 Provider
+         * */
+
+        App\Providers\UserDefindFuncProvider::class,
     ],
 
     /*
