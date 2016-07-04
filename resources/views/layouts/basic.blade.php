@@ -15,7 +15,7 @@
     @endsection
 
 @section('bottom')
-    <div>Hello world ! This is the bottom ! but not used in the sub-page !</div>
+    {{--<div>Hello world ! This is the bottom ! but not used in the sub-page !</div>--}}
     @endsection
 
 

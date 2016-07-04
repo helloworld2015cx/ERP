@@ -1,0 +1,40 @@
+.login-panel{
+    margin-top:100px;
+}
+.panel-self-define{
+    box-shadow: 0 0 15px #999;
+    border-top: 1px solid #fff;
+    border-left: 1px solid #eee;
+    border-right:1px solid #888;
+    border-bottom:1px solid #888;
+    width:40%;
+}
+
+.panel-heading-self{
+    text-align: center;
+    font-family: Consolas;
+
+}
+
+.login-header{
+    border : none;
+    box-shadow: 0 0 1px #ccc;
+    text-align: center;
+    font-family: Consolas, Menlo, Monaco, Lucida Console, Liberation Mono, DejaVu Sans Mono, Bitstream Vera Sans Mono, Courier New, monospace, serif;
+    font-size:20px;
+}
+
+
+.input-label{
+    font-weight: 100;
+    font-size: 14px;
+    font-family: Consolas, Menlo, Monaco, Lucida Console, Liberation Mono, DejaVu Sans Mono, Bitstream Vera Sans Mono, Courier New, monospace, serif;
+
+}
+.from-self{
+    width:85%;
+}
+
+.from-group-self{
+    margin-top:-5px;
+}

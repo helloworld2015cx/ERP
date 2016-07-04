@@ -4,21 +4,7 @@
 
 @section('css')
     @parent
-    <style>
-        *{
-            margin:0;
-            padding:0;
-            border:0;
-        }
-        .message{
-            padding:10px;
-            margin:5px auto;
-            box-shadow: 0 0 5px #777;
-            font-family: Consolas;
-            font-size: 15px;
-            width:80%;
-        }
-    </style>
+    <link rel="stylesheet" href="{{assets('css/login.css')}}">
     @endsection
 
 @section('head_js')
@@ -26,9 +12,36 @@
     @endsection
 
 @section('content')
-    @parent
+    {{--@parent--}}
+    <div class="container login-panel">
+        <div class="panel center-block panel-self-define login-header"> Sign in to ERP System</div>
+        <div class="panel panel-default center-block panel-self-define">
+            <div class="panel-heading panel-heading-self"> Login Here </div>
+            <div class="panel-body">
 
-    <div class="message">This is login page !</div>
+                <form action="" class="form from-self center-block">
+                    <div class="row">
+                        <div class="form-group from-group-self">
+                            <label class="input-label" for="">Username </label>
+                            <input type="text" name="username" placeholder="Please input your login name here" class="form-control">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group">
+                            <label class="input-label" for="">Password </label>
+                            <input type="password" name="password" placeholder="Input your login password here" class="form-control">
+                        </div>
+                    </div>
+
+                </form>
+
+            </div>
+
+            <div class="panel-footer">
+                <button class="btn btn-success center-block" style="width:90%;margin-bottom:10px;">Login</button>
+            </div>
+        </div>
+    </div>
 
     @endsection
 
