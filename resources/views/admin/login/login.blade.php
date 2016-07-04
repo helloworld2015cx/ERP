@@ -19,7 +19,7 @@
             <div class="panel-heading panel-heading-self"> Login Here </div>
             <div class="panel-body">
 
-                <form action="" class="form from-self center-block">
+                <form action="{{url("login/login")}}" id="loginForm" class="form from-self center-block" method="post">
                     <div class="row">
                         <div class="form-group from-group-self">
                             <label class="input-label" for="">Username </label>
@@ -32,13 +32,12 @@
                             <input type="password" name="password" placeholder="Input your login password here" class="form-control">
                         </div>
                     </div>
-
+                    {{csrf_field()}}
                 </form>
-
             </div>
 
             <div class="panel-footer">
-                <button class="btn btn-success center-block" style="width:90%;margin-bottom:10px;">Login</button>
+                <button class="btn btn-success center-block" id="login" style="width:90%;margin-bottom:10px;">Login</button>
             </div>
         </div>
     </div>
@@ -46,5 +45,10 @@
     @endsection
 
 @section('tail_js')
-
+    <script>
+        $('#login').on('click' , function(){
+//            $('#loginForm').action = '';
+            $('#loginForm').submit();
+        });
+    </script>
     @endsection

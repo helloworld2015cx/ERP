@@ -21,18 +21,19 @@ Route::get('app/' , function(){
     dump('Hello World ! 123 ');
 });
 
-Route::get('login' , function(){
-
-
-//    dump($_SERVER);
-//    dump(app_path('Http/user_functions.php'));
-//    assets('');
-
-    return view('admin/login/login');
+Route::group(['prefix'=>'login'] , function(){
+    Route::get('/' , function(){
+        if(session('user_id')){
+            return redirect('admin');
+        }
+        return view('admin/login/login');
+    });
+    Route::post('login' , 'Admin\\LoginController@login');
 });
+
 
 Route::group(['prefix'=>'admin' , 'middleware'=>'login'] , function(){
 
-    Route::get('/' , function(){});
+    Route::get('/' , "Admin\\IndexController@index");
 
 });
