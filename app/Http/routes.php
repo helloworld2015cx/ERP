@@ -12,26 +12,30 @@
 */
 
 Route::get('/', function () {
-//    dump('Hello World !');
     return view('welcome');
 });
 
 
-Route::get('app/' , function(){
-    dump('Hello World ! 123 ');
-});
-
+/*
+ * 登录路由组
+ * */
 Route::group(['prefix'=>'login'] , function(){
+
     Route::get('/' , function(){
         if(session('user_id')){
             return redirect('admin');
         }
         return view('admin/login/login');
     });
+
     Route::post('login' , 'Admin\\LoginController@login');
+
 });
 
 
+/*
+ * 基本管理界面路由组
+ * */
 Route::group(['prefix'=>'admin' , 'middleware'=>'login'] , function(){
 
     Route::get('/' , "Admin\\IndexController@index");

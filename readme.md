@@ -1,2 +1,2 @@
 This is a test project !
-create for func !
+create for fun !
