@@ -30,7 +30,7 @@ class LoginController extends Controller
         if($find){
             session(['user_id'=>$find[0]['id']]);
         }else{
-            return redirect()->back()->withInput($request->input(['username']));
+            return redirect()->back()->withInput(['username'=>$request->input('username')]);
         }
         return redirect('admin');
     }

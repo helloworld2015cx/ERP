@@ -23,7 +23,7 @@
                     <div class="row">
                         <div class="form-group from-group-self">
                             <label class="input-label" for="">Username </label>
-                            <input type="text" name="username" placeholder="Please input your login name here" class="form-control">
+                            <input type="text" name="username" value="{{old('username')}}" placeholder="Please input your login name here" class="form-control">
                         </div>
                     </div>
                     <div class="row">
