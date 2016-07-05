@@ -22,9 +22,6 @@ Route::get('/', function () {
 Route::group(['prefix'=>'login'] , function(){
 
     Route::get('/' , function(){
-
-//        dump($_SERVER['SCRIPT_NAME']);
-
         if(session('user_id')){
             return redirect('admin');
         }

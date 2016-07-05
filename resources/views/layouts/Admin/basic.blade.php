@@ -17,29 +17,27 @@
     @endsection
 
 
-{{--@section('content')--}}
-    {{--@endsection--}}
-
 {{-- 页面头 --}}
-@section('head')
+<div class="basic-content">
+    @section('head')
     @show
 
-{{-- 页面左侧栏 --}}
-@section('left')
+    {{-- 页面左侧栏 --}}
+    @section('left')
     @show
 
-@section('main_content')
+    @section('main_content')
     @endsection
 
-{{-- 页面右侧栏 --}}
-@section('right')
+    {{-- 页面右侧栏 --}}
+    @section('right')
     @show
 
-{{-- 页面底部信息区 --}}
-@section('bottom')
+    {{-- 页面底部信息区 --}}
+    @section('bottom')
     @show
 
-
+</div>
 
 {{-- 尾部加载的 js --}}
 

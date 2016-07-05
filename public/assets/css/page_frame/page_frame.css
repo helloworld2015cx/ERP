@@ -1,0 +1,24 @@
+.basic-content{
+    margin:0;
+    padding:0;
+    background-color:#ccc;
+    min-height: 400px;
+}
+/*@gray-darker:  lighten(#000, 13.5%);*/
+.basic-header{
+    height:50px;
+    background-color:#222;
+    border-radius: 2px;
+    font-size:15px;
+    font-family: Consolas;
+    line-height: 3.2em;
+    color:#ccc;
+    padding-left:5%;
+}
+
+.frame_menu{
+    float:left;
+    background-color:#00AA88;
+}
+
+

@@ -13,9 +13,9 @@ class IndexController extends Controller
 {
 
     public function index(){
+//        dump('You have successfully login !');
 
-
-        dump('You have successfully login !');
+        return view('admin.system.index');
     }
 
 

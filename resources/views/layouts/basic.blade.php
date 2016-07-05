@@ -11,7 +11,6 @@
     @endsection
 
 @section('content')
-    <div class="message">Hello World ! This is the main content !</div>
     @endsection
 
 @section('bottom')
