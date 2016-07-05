@@ -12,7 +12,7 @@
 @section('head_js')
     <script src="{{assets('plugins/jquery.js')}}"></script>
     <script src="{{assets('plugins/bootstrap3.3/js/bootstrap.min.js')}}"></script>
-    <script src="{{assets('plugins/jquery.dcjqaccordion.2.7.js')}}"></script>
+    <script class="include" src="{{assets('plugins/jquery.dcjqaccordion.2.7.js')}}"></script>
     <script src="{{assets('plugins/jquery.scrollTo.min.js')}}"></script>
     <script src="{{assets('plugins/jquery.nicescroll.js')}}"></script>
     <script src="{{assets('plugins/jquery.sparkline.js')}}"></script>
@@ -24,8 +24,6 @@
     <script src="{{assets('plugins/common-scripts.js')}}"></script>
     @endsection
 
-@section('content')
-    @endsection
 
 @section('bottom')
     {{--<div>Hello world ! This is the bottom ! but not used in the sub-page !</div>--}}
@@ -33,5 +31,5 @@
 
 
 @section('tail_js')
-
+    @parent
     @endsection
