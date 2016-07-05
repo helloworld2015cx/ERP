@@ -1,23 +1,37 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>@yield('title')</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="Mosaddek">
+    <meta name="keyword" content="FlatLab, Dashboard, Bootstrap, Admin, Template, Theme, Responsive, Fluid, Retina">
+    <title>
+        @section('title')
+            @show
+    </title>
 </head>
 @section('css')
-    <link rel="stylesheet" href="{{assets('plugins/bootstrap3.3/css/bootstrap.min.css')}}">
 @show
 @section('head_js')
-    <script src="{{assets('plugins/jquery3.min.js')}}"></script>
-    <script src="{{assets('plugins/bootstrap3.3/js/bootstrap.min.js')}}"></script>
 @show
 <body>
-@section('content')
-@show
+<section id="container">
+        @section('head')
+        @show
 
-@section('bottom')
-@show
+        @section('left')
+        @show
 
+        @section('main_content')
+        @show
+
+        @section('right')
+        @show
+
+    @section('bottom')
+    @show
+</section>
 </body>
 @section('tail_js')
 @show

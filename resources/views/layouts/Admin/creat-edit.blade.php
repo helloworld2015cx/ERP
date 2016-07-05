@@ -1,6 +1,7 @@
 @extends('layouts.Admin.basic')
 
-@section('title' , 'Create or edit page layouts ')
+@section('title')
+    @endsection
 
 @section('css')
     @parent

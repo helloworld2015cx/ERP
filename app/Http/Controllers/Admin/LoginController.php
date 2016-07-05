@@ -17,8 +17,6 @@ use Model\Users\User;
  * deal user login !
  *
  */
-
-
 class LoginController extends Controller
 {
     public function login(Request $request){

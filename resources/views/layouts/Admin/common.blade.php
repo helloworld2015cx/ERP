@@ -1,6 +1,7 @@
 @extends('layouts.Admin.page_frame')
 
-@section('title' , '')
+@section('title')
+    @endsection
 
 @section('css')
     @parent
