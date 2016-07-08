@@ -1,6 +1,8 @@
-@extends('layouts.basic')
+@extends('layouts.root')
 
-@section('title' , 'Login Page')
+@section('title')
+    Login Page !
+    @endsection
 
 @section('css')
     @parent
@@ -44,10 +46,9 @@
 
     @endsection
 
-@section('tail_js')
+@section('bottom_js')
     <script>
         $('#login').on('click' , function(){
-//            $('#loginForm').action = '';
             $('#loginForm').submit();
         });
     </script>
