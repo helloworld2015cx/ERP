@@ -39,5 +39,10 @@ Route::group(['prefix'=>'login'] , function(){
 Route::group(['prefix'=>'admin' , 'middleware'=>'login'] , function(){
 
     Route::get('/' , "Admin\\IndexController@index");
+    Route::get('system',"Admin\\SystemController@index");
 
+});
+
+Route::any('*' , function(){
+    dump('This is the default route ! for those not match any !');
 });
