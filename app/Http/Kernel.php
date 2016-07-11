@@ -15,7 +15,6 @@ class Kernel extends HttpKernel
      */
     protected $middleware = [
         \Illuminate\Foundation\Http\Middleware\CheckForMaintenanceMode::class,
-        \App\Http\Middleware\UserInit::class,
     ];
 
     /**
@@ -38,6 +37,7 @@ class Kernel extends HttpKernel
 
         'login' => [
             \App\Http\Middleware\AdminLogin::class,
+            \App\Http\Middleware\UserInit::class,
         ],
     ];
 

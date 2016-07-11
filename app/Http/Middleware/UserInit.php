@@ -23,9 +23,12 @@ class UserInit
         }
         $user_id = session('user_id');
 
+//        dump($user_id);
+//        dump(session());
+
         if($user_id){
             $current_user = User::getUserIdentity($user_id);
-            Cache::add('current_user' , $current_user , 30);
+            Cache::put('current_user' , $current_user , 30);
         }
 
         return $next($request);

@@ -9,6 +9,7 @@ use App\Http\Controllers\Controller;
 
 use Illuminate\Support\Facades\Redirect;
 use Model\Users\User;
+use Illuminate\Support\Facades\Cache;
 
 /**
  * Class LoginController
@@ -27,6 +28,7 @@ class LoginController extends Controller
 
         if($find){
             session(['user_id'=>$find[0]['id']]);
+            Cache::put('user_id' , $find[0]['id']);
         }else{
             return redirect()->back()->withInput(['username'=>$request->input('username')]);
         }
