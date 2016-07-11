@@ -19,6 +19,7 @@ class UserInit
     public function handle($request, Closure $next)
     {
         if(Cache::get('current_user')){
+//            dump(Cache::get('current_user'));
             return $next($request);
         }
         $user_id = session('user_id');

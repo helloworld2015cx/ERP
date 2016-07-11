@@ -16,9 +16,9 @@ class SystemController extends Controller
 {
 
     public function index(){
-        $current_user = User::getUserIdentity(session('user_id'));
-        dump(session());
-        dump($current_user);
+//        $current_user = User::getUserIdentity(session('user_id'));
+//        dump(session());
+//        dump($current_user);
         dump(Cache::get('current_user'));
     }
 
