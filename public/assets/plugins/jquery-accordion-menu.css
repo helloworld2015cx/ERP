@@ -8,7 +8,7 @@
 
 .jquery-accordion-menu {
 	/*min-width: 245px;*/
-	width:210%;
+	width:100%;
 	float: left;
 	position: relative;
 	box-shadow: 0 10px 23px #333

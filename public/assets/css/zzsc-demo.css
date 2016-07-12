@@ -57,7 +57,7 @@ a{color: #2fa0ec;text-decoration: none;outline: none;}
 a:hover,a:focus{color:#74777b;}
 
 .zzsc-container{
-	/*width:35%;*/
+	width:100%;
 	margin: 0 auto;
 	overflow: hidden;
 }
@@ -238,7 +238,7 @@ a:hover,a:focus{color:#74777b;}
 }
 
 .content{
-	width:30%;
+	width:100%;
 	margin-top:5px;
 }
 .filterinput{

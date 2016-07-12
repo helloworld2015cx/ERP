@@ -9,7 +9,7 @@
 namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Cache;
-use Model\Users\User;
+//use Model\Users\User;
 
 
 class SystemController extends Controller

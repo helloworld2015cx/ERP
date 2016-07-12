@@ -17,21 +17,31 @@
     @show
 </head>
 <body>
-<div>
+<div class="admin-page-content">
     @section('header')
     @show
-        <div class="pull-left left_menu">
-            @section('left')
+        <div class="second_row">
+            <div class="pull-left left_menu">
+                @section('left')
+                @show
+            </div>
+            <div class="container main-content">
+                <div class="col-xs-12 sub-main-content">
+                    @section('content')
+
+                        <div class="">Hello World !</div>
+
+                    @show
+                </div>
+            </div>
+            @section('right')
             @show
         </div>
-        <div class="container">
-            @section('content')
+        <div class="third_row">
+            @section('bottom')
+                <div class="">@ Hello world This is the footer !</div>
             @show
         </div>
-    @section('right')
-    @show
-    @section('bottom')
-    @show
 </div>
 </body>
 
