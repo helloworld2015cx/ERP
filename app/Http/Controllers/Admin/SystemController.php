@@ -17,7 +17,10 @@ class SystemController extends Controller
 
 
     public function __init__(){
-        dump(can('menu_manage'));
+        if(!can('menu_manage')){
+            return view('');
+        }
+        return true;
 //        return view('');
     }
 
