@@ -33,6 +33,19 @@ Route::group(['prefix'=>'login'] , function(){
 });
 
 
+/**
+ * 禁止访问页面
+ */
+Route::group(['prefix'=>'forbidden'],function(){
+    Route::get('menu' , function(){
+//        dump('Enter this route !');
+//        sleep(3);
+        return view('admin.access-forbidden');
+    });
+});
+
+
+
 /*
  * 基本管理界面路由组
  * */

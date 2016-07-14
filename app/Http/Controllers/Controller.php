@@ -7,6 +7,7 @@ use Illuminate\Routing\Controller as BaseController;
 use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Foundation\Auth\Access\AuthorizesResources;
+use Illuminate\Support\Facades\Redirect;
 
 class Controller extends BaseController
 {
@@ -16,7 +17,10 @@ class Controller extends BaseController
     public function __construct()
     {
         if(method_exists($this , '__init__')){
-            $this->__init__();
+            $re = $this->__init__();
+            if($re instanceof Redirect){
+                return $re;
+            }
         }
     }
 

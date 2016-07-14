@@ -18,7 +18,8 @@ class SystemController extends Controller
 
     public function __init__(){
         if(!can('menu_manage')){
-            return view('');
+//            dump('1111111111111111111111111');
+            return redirect('forbidden/menu');
         }
         return true;
 //        return view('');
@@ -26,9 +27,9 @@ class SystemController extends Controller
 
 
     public function index(){
-        $current_user = User::getUserIdentity(session('user_id'));
-        dump($current_user['menus']);
-        dump(SYSTEM_CACHE_MINUTES);
+//        $current_user = User::getUserIdentity(session('user_id'));
+//        dump($current_user['menus']);
+//        dump(SYSTEM_CACHE_MINUTES);
 //        $data = [[1,'hello','world'],[0,'cheng','xiang'],[2,'shao','kai']];
 //        $order = [1,0,2];
 //        array_multisort($order , SORT_ASC , $data);
@@ -38,7 +39,6 @@ class SystemController extends Controller
         dump(Cache::get('current_user'));
 
 //        dump(User::orderMenus($current_user['menus']));
-
 
 
 //        $testArr = [0,1,2,[2,3,0,['Hello','world']],['cheng','xiang']];

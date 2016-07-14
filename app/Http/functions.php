@@ -48,7 +48,7 @@ if(!function_exists('recursiveFindInArrayByKey')){
             if($key==$value['menu_name']){
                 return true;
             }else{
-                dump($value);
+//                dump($value);
 //                exit;
                 if(is_array($value['sub_menus'])){
                     return recursiveFindInArrayByKey($value['sub_menus'] , $key);
