@@ -15,6 +15,16 @@ use Model\Users\User;
 class SystemController extends Controller
 {
 
+
+    public function __init__(){
+        if(!can('menu_manage')){
+            return view('');
+        }
+        return true;
+//        return view('');
+    }
+
+
     public function index(){
         $current_user = User::getUserIdentity(session('user_id'));
         dump($current_user['menus']);
@@ -23,6 +33,12 @@ class SystemController extends Controller
 //        array_multisort($order , SORT_ASC , $data);
 //        dump($data);
 //        dump(Cache::get('current_user'));
+
+        dump(Cache::get('current_user'));
+
+//        dump(User::orderMenus($current_user['menus']));
+        
+
 
 //        $testArr = [0,1,2,[2,3,0,['Hello','world']],['cheng','xiang']];
 //        self::recursivePrint($testArr);
@@ -38,7 +54,9 @@ class SystemController extends Controller
                 echo $value."<br>";
             }
         }
-
     }
+
+
+
 
 }

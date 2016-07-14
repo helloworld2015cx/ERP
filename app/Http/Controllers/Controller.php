@@ -11,4 +11,14 @@ use Illuminate\Foundation\Auth\Access\AuthorizesResources;
 class Controller extends BaseController
 {
     use AuthorizesRequests, AuthorizesResources, DispatchesJobs, ValidatesRequests;
+
+
+    public function __construct()
+    {
+        if(method_exists($this , '__init__')){
+            $this->__init__();
+        }
+    }
+
+
 }
