@@ -8,7 +8,7 @@
 
 namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
-use Illuminate\Support\Facades\Cache;
+//use Illuminate\Support\Facades\Cache;
 
 
 class IndexController extends Controller
@@ -16,7 +16,7 @@ class IndexController extends Controller
 
     public function index(){
 
-        dump(Cache::get('current_user'));
+//        dump(Cache::get('current_user'));
         return view('admin.system.index');
     }
 
