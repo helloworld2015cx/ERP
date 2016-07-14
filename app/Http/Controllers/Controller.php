@@ -13,7 +13,7 @@ class Controller extends BaseController
     use AuthorizesRequests, AuthorizesResources, DispatchesJobs, ValidatesRequests;
 
 
-    protected function __construct()
+    public function __construct()
     {
         if(method_exists($this , '__init__')){
             $this->__init__();
