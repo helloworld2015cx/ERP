@@ -63,6 +63,7 @@ class User extends Model
      * @return array
      */
     public static function getMenusByRoleIds($id){
+
         if(is_array($id)) {
             $raw_menus = RoleMenu::select('menu_id')->whereIn('role_id', $id)->with('hasOneMenu')->get()->toArray();
         }else{
@@ -99,13 +100,22 @@ class User extends Model
         $p_menus = [];
         $sub_menus = [];
         $numP = 0;
+        $numS = 0;
+
         foreach($menus as $key=>$value){
-            if($value['pid']==0){
+
+            if($value['pid']==0) {
+
                 $p_menus[$numP] = $value;
                 $p_menus[$numP]['sub_menus'] = false;
                 $numP++;
-            }else{
-                $sub_menus[] = $value;
+
+            } else {
+
+                $sub_menus[$numS] = $value;
+                $sub_menus[$numS]['sub_menus'] = false;
+                $numS++;
+
             }
         }
 

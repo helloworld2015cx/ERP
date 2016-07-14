@@ -29,7 +29,7 @@ class UserInit
 
         if($user_id){
             $current_user = User::getUserIdentity($user_id);
-            Cache::put('current_user' , $current_user , 30);
+            Cache::put('current_user' , $current_user , SYSTEM_CACHE_MINUTES);
         }
 
         return $next($request);
