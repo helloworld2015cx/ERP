@@ -55,9 +55,11 @@ class User extends Model
         }else{
             $raw_menus = RoleMenu::select('menu_id')->where('role_id', $id)->with('hasOneMenu')->get()->toArray();
         }
+
         $menus = [];
         $mark = [];
         $i=0;
+
         foreach($raw_menus as $k=>$v){
             if(in_array($v['menu_id'] , $mark)) continue;
             $mark[] = $v['menu_id'];

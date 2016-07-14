@@ -21,12 +21,12 @@
     @section('header')
     @show
         <div class="second_row">
-            <div class="pull-left left_menu">
+            <div class="pull-left left_menu" id="_left_menu_">
                 @section('left')
                 @show
             </div>
             <div class="container main-content">
-                <div class="col-xs-12 sub-main-content">
+                <div class="col-xs-12 sub-main-content" id="_sub_main_content_">
                     @section('content')
 
                         <div class="">Hello World !</div>
@@ -39,7 +39,7 @@
         </div>
         <div class="third_row">
             @section('bottom')
-                <div class="">@ Hello world This is the footer !</div>
+
             @show
         </div>
 </div>

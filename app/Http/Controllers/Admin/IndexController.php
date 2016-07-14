@@ -8,13 +8,15 @@
 
 namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Cache;
+
 
 class IndexController extends Controller
 {
 
     public function index(){
-//        dump('You have successfully login !');
 
+        dump(Cache::get('current_user'));
         return view('admin.system.index');
     }
 

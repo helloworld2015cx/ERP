@@ -21,7 +21,7 @@
     @parent
 
     <div class="frame_header">
-        <i class="fa fa-align-justify fa-2x" title="Align Justify"></i>
+        <i class="fa fa-align-justify fa-2x" id="_toggle_font_" title="Align Justify"></i>
         <div class="header-flg">Hello World !</div>
     </div>
     @endsection
@@ -89,10 +89,18 @@
 
 @section('bottom')
     @parent
+    <div class="">@ Hello world This is the footer !</div>
     @endsection
 
 @section('bottom_js')
     @parent
     <script src="{{assets('js/accordin.js')}}"></script>
+    <script>
+        $('#_toggle_font_').on('click' , function(){
+            console.log($('#_left_menu_').css('display'));
+            console.log($('#_sub_main_content_').css('display'));
+
+        });
+    </script>
     @endsection
 
