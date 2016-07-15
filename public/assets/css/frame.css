@@ -1,6 +1,8 @@
 
 .admin-page-content{
     font-family:微软雅黑;
+    background-color: #eeeeee;
+    min-height: 666px;
 }
 
 
@@ -37,6 +39,7 @@
     -moz-box-shadow: 0 0 5px #999;
     box-shadow: 0 0 5px #999;
     padding:10px;
+    border-radius: 2px;
     background-color: #eee;
     font-size:14px;
     font-family: "微软雅黑", helvetica, arial, sans-serif;

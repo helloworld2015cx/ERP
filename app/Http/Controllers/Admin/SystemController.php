@@ -19,7 +19,7 @@ class SystemController extends Controller
     public function __init__(){
         if(!can('menu_manage')){
 //            dump('1111111111111111111111111');
-            return redirect('forbidden/menu');
+            $this->middleware('access_denied');
         }
         return true;
 //        return view('');
