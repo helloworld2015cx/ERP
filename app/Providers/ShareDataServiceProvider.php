@@ -4,6 +4,7 @@ namespace App\Providers;
 
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\ServiceProvider;
+use Model\Users\User;
 
 class ShareDataServiceProvider extends ServiceProvider
 {
@@ -15,7 +16,16 @@ class ShareDataServiceProvider extends ServiceProvider
     public function boot()
     {
         //
-        view()->share('userData' , Cache::get('current_user'));
+        $data =  Cache::get('current_user');
+
+//        dump(session('user_id'));
+
+        if(!$data){
+//            $data = User::getUserIdentity(session('user_id'));
+//            Cache::put('current_user' , $data);
+        }
+        view()->share('userData' , $data);
+
     }
 
     /**

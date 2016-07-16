@@ -28,7 +28,7 @@ class SystemController extends Controller
 
     public function index(){
 //        $current_user = User::getUserIdentity(session('user_id'));
-//        dump($current_user['menus']);
+//        dump($current_user);
 //        dump(SYSTEM_CACHE_MINUTES);
 //        $data = [[1,'hello','world'],[0,'cheng','xiang'],[2,'shao','kai']];
 //        $order = [1,0,2];
