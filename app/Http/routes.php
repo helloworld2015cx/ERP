@@ -51,6 +51,7 @@ Route::group(['prefix'=>'admin' , 'middleware'=>'login'] , function(){
 
     Route::get('/' , "Admin\\IndexController@index");
     Route::get('system',"Admin\\SystemController@index");
+    Route::get('menu_manage' , "Admin\\MenuManageController@index");
 
 });
 

@@ -30,6 +30,7 @@ class LoginController extends Controller
 
             session(['user_id'=>$find[0]['id']]);
             Cache::put('user_id' , $find[0]['id'] ,SYSTEM_CACHE_MINUTES);
+
             $userData = User::getUserIdentity($find[0]['id'] );
 
             if(!$userData) return null;

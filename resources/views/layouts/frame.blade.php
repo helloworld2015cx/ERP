@@ -33,43 +33,59 @@
                 <div class="jquery-accordion-menu-header" id="form"></div>
                 <ul id="demo-list">
 
-                    <li class="active"><a href="#"><i class="fa fa-home"></i>Home </a></li>
-                    <li><a href="#"><i class="fa fa-glass"></i>Events </a></li>
-                    {{--<li>
-                        <a href="#"><i class="fa fa-camera-retro"></i>Gallery</a>
-                        <span class="jquery-accordion-menu-label">12 </span>
-                    </li>--}}
-                    <li>
-                        <a href="#"><i class="fa fa-cog"></i>Services </a>
-                        <ul class="submenu">
-                            <li><a href="#">Web Design </a></li>
-                            <li><a href="#">Hosting </a></li>
-                            <li><a href="#">Design </a>
-                                <ul class="submenu">
-                                    <li><a href="#">Graphics </a></li>
-                                    <li><a href="#">Vectors </a></li>
-                                    <li><a href="#">Photoshop </a></li>
-                                    <li><a href="#">Fonts </a></li>
-                                </ul>
-                            </li>
-                            <li><a href="#">Consulting </a></li>
-                        </ul>
-                    </li>
-                    <li><a href="#"><i class="fa fa-home"></i>System </a></li>
-                    <li><a href="#"><i class="fa fa-suitcase"></i>Portfolio </a>
-                        <ul class="submenu">
-                            <li><a href="#">Web Design </a></li>
-                            <li><a href="#">Graphics </a><span class="jquery-accordion-menu-label">10 </span></li>
-                            <li><a href="#">Photoshop </a></li>
-                            <li><a href="#">Programming </a></li>
-                        </ul>
-                    </li>
+                    @foreach($userData['menus'] as $k=>$p_menu )
+                        <li>
+                            <a href="#">
+                                <i class="{{$p_menu['menu_icon']}}"></i>{{$p_menu['display_name']}} </a>
+                                @if(is_array($p_menu['sub_menus']))
+                                    <ul class="submenu">
+                                        @foreach($p_menu['sub_menus'] as $subk=>$submenu)
+                                            <li>
+                                                <a href="{{url($submenu['uri'])}}" class="">{{$submenu['display_name']}}</a>
+                                            </li>
+                                            @endforeach
+                                    </ul>
+                                    @endif
+                        </li>
+                        @endforeach
+
+                    {{--<li class="active"><a href="#"><i class="fa fa-home"></i>Home </a></li>--}}
+                    {{--<li><a href="#"><i class="fa fa-glass"></i>Events </a></li>--}}
+                    {{--<li>--}}
+                        {{--<a href="#"><i class="fa fa-camera-retro"></i>Gallery</a>--}}
+                        {{--<span class="jquery-accordion-menu-label">12 </span>--}}
+                    {{--</li>--}}
+                    {{--<li>--}}
+                        {{--<a href="#"><i class="fa fa-cog"></i>Services </a>--}}
+                        {{--<ul class="submenu">--}}
+                            {{--<li><a href="#">Web Design </a></li>--}}
+                            {{--<li><a href="#">Hosting </a></li>--}}
+                            {{--<li><a href="#">Design </a>--}}
+                                {{--<ul class="submenu">--}}
+                                    {{--<li><a href="#">Graphics </a></li>--}}
+                                    {{--<li><a href="#">Vectors </a></li>--}}
+                                    {{--<li><a href="#">Photoshop </a></li>--}}
+                                    {{--<li><a href="#">Fonts </a></li>--}}
+                                {{--</ul>--}}
+                            {{--</li>--}}
+                            {{--<li><a href="#">Consulting </a></li>--}}
+                        {{--</ul>--}}
+                    {{--</li>--}}
+                    {{--<li><a href="#"><i class="fa fa-home"></i>System </a></li>--}}
+                    {{--<li><a href="#"><i class="fa fa-suitcase"></i>Portfolio </a>--}}
+                        {{--<ul class="submenu">--}}
+                            {{--<li><a href="#">Web Design </a></li>--}}
+                            {{--<li><a href="#">Graphics </a><span class="jquery-accordion-menu-label">10 </span></li>--}}
+                            {{--<li><a href="#">Photoshop </a></li>--}}
+                            {{--<li><a href="#">Programming </a></li>--}}
+                        {{--</ul>--}}
+                    {{--</li>--}}
                     {{--<li><a href="#"><i class="fa fa-user"></i>About </a></li>--}}
                     {{--<li><a href="#"><i class="fa fa-envelope"></i>Contact </a></li>--}}
 
                 </ul>
                 <div class="jquery-accordion-menu-footer">
-                    Footer
+                    {{--Footer--}}
                 </div>
             </div>
         </div>
