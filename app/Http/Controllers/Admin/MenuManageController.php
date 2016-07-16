@@ -18,7 +18,9 @@ class MenuManageController extends Controller
     {
         //
 
-        dump('Hello World !'.__METHOD__);
+//        dump('Hello World !'.__METHOD__);
+
+        return view('admin.menu.index');
 
 
     }
