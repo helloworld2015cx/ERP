@@ -81,6 +81,10 @@
 
 @section('content')
     @parent
+
+    {{dump($userData)}}
+
+
     @endsection
 
 @section('right')

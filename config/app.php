@@ -161,6 +161,7 @@ return [
          * */
 
         App\Providers\UserDefindFuncProvider::class,
+        App\Providers\ShareDataServiceProvider::class,
     ],
 
     /*
