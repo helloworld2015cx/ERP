@@ -38,8 +38,6 @@ Route::group(['prefix'=>'login'] , function(){
  */
 Route::group(['prefix'=>'forbidden'],function(){
     Route::get('menu' , function(){
-//        dump('Enter this route !');
-//        sleep(3);
         return view('admin.access-forbidden');
     });
 });
