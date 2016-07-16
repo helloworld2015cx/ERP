@@ -34,6 +34,11 @@ class User extends Model
      */
     public static function getUserIdentity($userid){
         $re = static::where('id' , $userid)->first();
+
+        if(!$re){
+            return null;
+        }
+
         $current_user = [
             'username' => $re->username,
             'user_id'  => $re->id,
