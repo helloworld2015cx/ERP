@@ -14,7 +14,9 @@ table,table tr th{
     background-color: #eeeeee;
     min-height: 666px;
 }
-
+#_toggle_font_{
+    cursor: pointer;
+}
 
 .frame_header{
     width:100%;
@@ -27,8 +29,9 @@ table,table tr th{
 }
 
 .breadcrumb{
-    box-shadow: 0 0 5px #aaa;
-    background-color: #ddd;
+    /*box-shadow: 0 0 5px #aaa;*/
+    display: inline-block;
+    padding-top:15px;
 }
 
 
@@ -82,8 +85,14 @@ table,table tr th{
     -webkit-border-radius: 2px;
     -moz-border-radius: 2px;
     border-radius: 2px;
+    padding:0 8px;
 }
 
+.content-header {
+    position: relative;
+    padding: 0 15px 0 15px;
+    background-color: #fff;
+}
 
 
 .sub-main-content{

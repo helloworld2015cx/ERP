@@ -6,21 +6,41 @@
 
 @section('css')
     @parent
-    {{--<link rel="stylesheet" href="{{assets('plugins/FontAwesome3.2/font-awesome.min.css')}}">--}}
+
+    <style>
+        table tr td{
+            padding:5px;
+        }
+
+        .create-btn{
+            margin-bottom: 2px;
+        }
+        .create-btn a{
+            background-color: #0099FF;
+            border: none;
+        }
+
+    </style>
+
     @endsection
 
 
 @section('content')
 
     <section class="content-header">
-        <h1>
+        <h1 style="display: inline-block">
             菜单列表
             <small><a href="">菜单管理</a></small>
         </h1>
-        <ol class="breadcrumb">
+        <ol class="breadcrumb pull-right">
             <li><a href=""><i class="fa fa-dashboard"></i> 主页</a></li>
             <li class="active">菜单管理 - 菜单列表</li>
         </ol>
+        <div class="row">
+            <div class="col-xs-1 create-btn">
+            <a href="{{url('admin/menu_manage/create')}}" class="btn btn-primary">新建菜单</a>
+            </div>
+        </div>
 
     </section>
 
@@ -45,7 +65,6 @@
                 </div>
 
             </div>
-            {{--{{dump($menus)}}--}}
             <div class="table-responsive">
                 <table class="table table-condensed table-striped">
                     <tr>
@@ -55,21 +74,22 @@
                         <th>菜单连接</th>
                         <th>上级菜单</th>
                         <th>菜单创建人</th>
+                        <th>创建时间</th>
                     </tr>
 
 
                     @foreach($menus as $menu_key=>$menu_value)
                         <tr>
-                            <td>
-                                <a class="btn btn-primary" href="{{url('admin/menu_manage',['id'=>$menu_value->id])}}">
+                            <td style="padding: 5px">
+                                <a class="btn btn-primary btn-sm" href="{{url('admin/menu_manage',['id'=>$menu_value->id])}}">
                                     <i class="fa fa-eye" title="查看" aria-hidden="true"></i>
                                 </a>
 
-                                <a class="btn btn-success" href="{{url('admin/menu_manage').'/'.$menu_value->id.'/edit'}}">
+                                <a class="btn btn-sm btn-success" href="{{url('admin/menu_manage').'/'.$menu_value->id.'/edit'}}">
                                     <i class="fa fa-pencil-square-o" title="修改" aria-hidden="true"></i>
                                 </a>
 
-                                <a class="btn btn-danger delete_item" href="javascript:void(0)">
+                                <a class="btn btn-sm btn-danger delete_item" href="javascript:void(0)">
                                     <i class="fa fa-trash-o" title="删除" data-id="{{$menu_value->id}}" aria-hidden="true"></i>
                                 </a>
 
@@ -77,11 +97,12 @@
                                 {{--<i class=""></i>--}}
                                 {{--<i class="fa fa-trash-o fa-fw"></i>--}}
                             </td>
-                            <td>{{$menu_value->id}}</td>
-                            <td>{{$menu_value->display_name}}</td>
-                            <td>{{$menu_value->uri}}</td>
-                            <td>{{$menu_value->hasOneParent ? $menu_value->hasOneParent->display_name:''}}</td>
-                            <td>{{$menu_value->hasOneCreator ? $menu_value->hasOneCreator->username : ''}}</td>
+                            <td style="padding:5px">{{$menu_value->id}}</td>
+                            <td style="padding: 5px">{{$menu_value->display_name}}</td>
+                            <td style="padding: 5px">{{$menu_value->uri}}</td>
+                            <td style="padding: 5px">{{$menu_value->hasOneParent ? $menu_value->hasOneParent->display_name:''}}</td>
+                            <td style="padding: 5px">{{$menu_value->hasOneCreator ? $menu_value->hasOneCreator->username : ''}}</td>
+                            <td style="padding: 5px">{{$menu_value->create_at}}</td>
                         </tr>
                     @endforeach
 

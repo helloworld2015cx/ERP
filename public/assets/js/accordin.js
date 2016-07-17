@@ -6,10 +6,10 @@ jQuery(document).ready(function () {
 $(function () {
     //列表项背景颜色切换
     $("#demo-list li").click(function () {
-        $("#demo-list li.active").removeClass("active")
+        $("#demo-list li.active").removeClass("active");
         $(this).addClass("active");
     })
-})
+});
 
 (function ($) {
     $.expr[":"].Contains = function (a, i, m) {

@@ -30,63 +30,33 @@
     <div class="zzsc-container">
         <div class="content">
             <div id="jquery-accordion-menu" class="jquery-accordion-menu red">
-                <div class="jquery-accordion-menu-header" id="form"></div>
+                <div class="jquery-accordion-menu-header" id="form">
+                    Header
+                </div>
                 <ul id="demo-list">
-
+                    @if(!$userData)
+                        <?php $userData = getUserData()?>
+                    @endif
                     @foreach($userData['menus'] as $k=>$p_menu )
                         <li>
                             <a href="#">
                                 <i class="{{$p_menu['menu_icon']}}"></i>{{$p_menu['display_name']}} </a>
-                                @if(is_array($p_menu['sub_menus']))
-                                    <ul class="submenu">
-                                        @foreach($p_menu['sub_menus'] as $subk=>$submenu)
-                                            <li>
-                                                <a href="{{url($submenu['uri'])}}" class="">{{$submenu['display_name']}}</a>
-                                            </li>
-                                            @endforeach
-                                    </ul>
-                                    @endif
+                            @if(is_array($p_menu['sub_menus']))
+                                <ul class="submenu">
+                                    @foreach($p_menu['sub_menus'] as $subk=>$submenu)
+                                        <li>
+                                            <a href="{{url($submenu['uri'])}}" class="">{{$submenu['display_name']}}</a>
+                                        </li>
+                                    @endforeach
+                                </ul>
+                            @endif
                         </li>
-                        @endforeach
-
-                    {{--<li class="active"><a href="#"><i class="fa fa-home"></i>Home </a></li>--}}
-                    {{--<li><a href="#"><i class="fa fa-glass"></i>Events </a></li>--}}
-                    {{--<li>--}}
-                        {{--<a href="#"><i class="fa fa-camera-retro"></i>Gallery</a>--}}
-                        {{--<span class="jquery-accordion-menu-label">12 </span>--}}
-                    {{--</li>--}}
-                    {{--<li>--}}
-                        {{--<a href="#"><i class="fa fa-cog"></i>Services </a>--}}
-                        {{--<ul class="submenu">--}}
-                            {{--<li><a href="#">Web Design </a></li>--}}
-                            {{--<li><a href="#">Hosting </a></li>--}}
-                            {{--<li><a href="#">Design </a>--}}
-                                {{--<ul class="submenu">--}}
-                                    {{--<li><a href="#">Graphics </a></li>--}}
-                                    {{--<li><a href="#">Vectors </a></li>--}}
-                                    {{--<li><a href="#">Photoshop </a></li>--}}
-                                    {{--<li><a href="#">Fonts </a></li>--}}
-                                {{--</ul>--}}
-                            {{--</li>--}}
-                            {{--<li><a href="#">Consulting </a></li>--}}
-                        {{--</ul>--}}
-                    {{--</li>--}}
-                    {{--<li><a href="#"><i class="fa fa-home"></i>System </a></li>--}}
-                    {{--<li><a href="#"><i class="fa fa-suitcase"></i>Portfolio </a>--}}
-                        {{--<ul class="submenu">--}}
-                            {{--<li><a href="#">Web Design </a></li>--}}
-                            {{--<li><a href="#">Graphics </a><span class="jquery-accordion-menu-label">10 </span></li>--}}
-                            {{--<li><a href="#">Photoshop </a></li>--}}
-                            {{--<li><a href="#">Programming </a></li>--}}
-                        {{--</ul>--}}
-                    {{--</li>--}}
-                    {{--<li><a href="#"><i class="fa fa-user"></i>About </a></li>--}}
-                    {{--<li><a href="#"><i class="fa fa-envelope"></i>Contact </a></li>--}}
-
+                    @endforeach
                 </ul>
                 <div class="jquery-accordion-menu-footer">
-                    {{--Footer--}}
+                    Footer
                 </div>
+
             </div>
         </div>
     </div>
@@ -97,10 +67,6 @@
 
 @section('content')
     @parent
-
-    {{dump($userData)}}
-
-
     @endsection
 
 @section('right')
@@ -116,12 +82,19 @@
     @parent
     <script src="{{assets('js/accordin.js')}}"></script>
     <script>
-        $('#_toggle_font_').on('click' , function(){
-            $('#_left_menu_').toggle(function(){
-//                $('.main-content').width('90%');
-            });
+        var $changeToWidth = window.outerWidth;
+        $menus = $('#_left_menu_');
 
+        $('#_toggle_font_').on('click' , function(){
+            if($menus.css('display')=='block') {
+                $menus.hide(200);
+                $('.main-content').css('width', $changeToWidth * 0.99).css('display', 'block');
+            }else if($menus.css('display','none')){
+                $menus.show(200);
+                $('.main-content').css('width', $changeToWidth * 0.807).css('display', 'inline-block');
+            }
         });
+
     </script>
     @endsection
 

@@ -47,7 +47,7 @@ class MenuManageController extends Controller
      */
     public function create()
     {
-        //
+        dump('Menu Create operate is OK !');
     }
 
     /**

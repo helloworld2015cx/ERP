@@ -61,5 +61,16 @@ if(!function_exists('recursiveFindInArrayByKey')){
     }
 }
 
+if(!function_exists('getUserData')){
+    function getUserData($userid=''){
+
+        if(!$userid){
+            $userid = session('user_id');
+        }
+
+        return \Model\Users\User::getUserIdentity($userid);
+    }
+}
+
 
 
