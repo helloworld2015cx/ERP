@@ -19,4 +19,14 @@ class Menus extends Model
     public function roleMenu(){
         return $this->belongsTo('Model\\Users\\RoleMenu' , 'menu_id' , 'id');
     }
+
+    public function hasOneParent(){
+        return $this->hasOne('Model\\Users\\Menus' , 'id' , 'pid');
+    }
+
+    public function hasOneCreator(){
+        return $this->hasOne('Model\\Users\\User' , 'id' , 'creator');
+    }
+
+
 }

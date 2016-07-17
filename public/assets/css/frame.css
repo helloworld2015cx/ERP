@@ -1,4 +1,14 @@
 
+h1{
+    font-size: 24px;
+    margin-top:10px;
+}
+
+table,table tr th{
+    text-align: center;
+}
+
+
 .admin-page-content{
     font-family:微软雅黑;
     background-color: #eeeeee;
@@ -16,6 +26,43 @@
     padding:13px 2.5%;
 }
 
+.breadcrumb{
+    box-shadow: 0 0 5px #aaa;
+    background-color: #ddd;
+}
+
+
+.box{
+    position: relative;
+    border-radius: 3px;
+    background: #ffffff;
+    border-top: 3px solid #d2d6de;
+    margin-bottom: 20px;
+    width: 100%;
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
+}
+
+.box.box-primary{
+    border-top-color: #3c8dbc;
+    background-color: #fff;
+}
+
+.box-tools{
+    position: absolute;
+    right: 10px;
+    top: 5px;
+}
+
+.box-header{
+    padding:10px;
+}
+
+.box-title{
+    display: inline-block;
+    font-size: 18px;
+    margin: 0;
+    line-height: 1;
+}
 
 
 

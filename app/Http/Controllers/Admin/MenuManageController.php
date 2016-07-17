@@ -6,9 +6,21 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
+use Model\Users\Menus;
 
 class MenuManageController extends Controller
 {
+
+
+
+    public function __init__(){
+//        dump('___Enter Here ____'.__METHOD__);
+        if(!can('menu_manage')){
+            $this->middleware('access_denied');
+        }
+    }
+
+
     /**
      * Display a listing of the resource.
      *
@@ -16,11 +28,16 @@ class MenuManageController extends Controller
      */
     public function index()
     {
-        //
+        //'id,menu_name,display_name,order,uri,creator,create_at,update_at'
+        $menus = Menus::select(['id','pid','menu_name','display_name','uri','creator','create_at','update_at'])
+            ->with('hasOneCreator')
+            ->with('hasOneParent')
+            ->get();//->toArray();
 
+//        dump($menus);exit;
 //        dump('Hello World !'.__METHOD__);
 
-        return view('admin.menu.index');
+        return view('admin.menu.index' , compact('menus' , $menus));
 
 
     }
