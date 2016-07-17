@@ -70,16 +70,21 @@ table,table tr th{
     width:19%;
     display: inline-block;
 }
-
+.show_content{
+    /*margin:5px auto;*/
+    width:80.7%;
+    display: inline-block;
+}
 
 .main-content{
-    display: inline-block;
-    width:79%;
+    width:100%;
     margin-top:10px;
     -webkit-border-radius: 2px;
     -moz-border-radius: 2px;
     border-radius: 2px;
 }
+
+
 
 .sub-main-content{
     -webkit-box-shadow: 0 0 5px #999;

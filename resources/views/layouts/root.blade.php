@@ -25,13 +25,15 @@
                 @section('left')
                 @show
             </div>
-            <div class="container main-content">
-                <div class="col-xs-12 sub-main-content" id="_sub_main_content_">
-                    @section('content')
+            <div class="show_content">
+                <div class="container main-content">
+                    <div class="col-xs-12 sub-main-content" id="_sub_main_content_">
+                        @section('content')
 
-                        <div class="">Hello World !</div>
+                            <div class="">Hello World !</div>
 
-                    @show
+                        @show
+                    </div>
                 </div>
             </div>
             @section('right')

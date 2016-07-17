@@ -47,14 +47,15 @@ Route::group(['prefix'=>'forbidden'],function(){
 /*
  * 基本管理界面路由组
  * */
-Route::group(['prefix'=>'admin' , 'middleware'=>'login'] , function(){
+Route::group(['prefix'=>'admin' ,'namespace'=>'Admin', 'middleware'=>'login'] , function(){
 
-    Route::get('/' , "Admin\\IndexController@index");
-    Route::get('system',"Admin\\SystemController@index");
-    Route::get('menu_manage' , "Admin\\MenuManageController@index");
+    Route::get('/' , "IndexController@index");
+    Route::get('system',"SystemController@index");
+//    Route::get('menu_manage' , "MenuManageController@index");
+    Route::resource('menu_manage' , "MenuManageController");
 
 });
 
-Route::any('*' , function(){
-    dump('This is the default route ! for those not match any !');
-});
+//Route::when('*' , function(){
+//    dump('This is the default route ! for those not match any !');
+//});

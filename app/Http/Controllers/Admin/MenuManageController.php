@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use Model\Users\Menus;
+use Illuminate\Support\Facades\Cache;
 
 class MenuManageController extends Controller
 {
@@ -33,9 +34,6 @@ class MenuManageController extends Controller
             ->with('hasOneCreator')
             ->with('hasOneParent')
             ->get();//->toArray();
-
-//        dump($menus);exit;
-//        dump('Hello World !'.__METHOD__);
 
         return view('admin.menu.index' , compact('menus' , $menus));
 
@@ -72,6 +70,7 @@ class MenuManageController extends Controller
     public function show($id)
     {
         //
+        dump($id);
     }
 
     /**
@@ -83,6 +82,9 @@ class MenuManageController extends Controller
     public function edit($id)
     {
         //
+
+        dump('This is edit method ! '.$id);
+
     }
 
     /**
@@ -106,5 +108,6 @@ class MenuManageController extends Controller
     public function destroy($id)
     {
         //
+        dump(__METHOD__.' is in use '.$id);
     }
 }

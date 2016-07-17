@@ -21,7 +21,7 @@
     @parent
 
     <div class="frame_header">
-        <i class="fa fa-align-justify fa-2x" id="_toggle_font_" title="Align Justify"></i>
+        <i class="fa fa-align-justify fa-1x" style="font-size: 23px" id="_toggle_font_" title="Align Justify"></i>
         <div class="header-flg">Hello World !</div>
     </div>
     @endsection
@@ -117,8 +117,9 @@
     <script src="{{assets('js/accordin.js')}}"></script>
     <script>
         $('#_toggle_font_').on('click' , function(){
-            console.log($('#_left_menu_').css('display'));
-            console.log($('#_sub_main_content_').css('display'));
+            $('#_left_menu_').toggle(function(){
+//                $('.main-content').width('90%');
+            });
 
         });
     </script>
