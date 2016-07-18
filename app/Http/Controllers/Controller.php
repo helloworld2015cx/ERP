@@ -18,9 +18,9 @@ class Controller extends BaseController
     {
         if(method_exists($this , '__init__')){
             $re = $this->__init__();
-            if($re instanceof Redirect){
-                return $re;
-            }
+//            if($re instanceof Redirect){
+//                return $re;
+//            }
         }
     }
 
