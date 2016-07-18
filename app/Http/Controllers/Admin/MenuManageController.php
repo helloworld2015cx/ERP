@@ -47,7 +47,11 @@ class MenuManageController extends Controller
      */
     public function create()
     {
-        return view('admin.menu.create');
+        $Pmenus = Menus::select(['id','display_name'])
+            ->where('pid',0)->get()
+            ->toArray();
+
+        return view('admin.menu.create')->with('Pmenus',$Pmenus);
     }
 
     /**
