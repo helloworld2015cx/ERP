@@ -162,7 +162,8 @@ return [
          * */
 
         App\Providers\UserDefindFuncProvider::class,
-        App\Providers\ShareDataServiceProvider::class,
+//        App\Providers\ShareDataServiceProvider::class,
+        App\Providers\ViewComposerProvider::class,
     ],
 
     /*
