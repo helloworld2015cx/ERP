@@ -102,6 +102,7 @@
 
 @section('bottom_js')
 
+    @parent
     <script>
         $(document).ready(function(){
             $('#select_type input').iCheck({
@@ -113,7 +114,7 @@
 
         $first = $('#type_first');
         $second = $('#type_second');
-        
+
         $first.on('ifChecked', function(event){
             $('#menu_icon_box').removeClass('hidden')
         });

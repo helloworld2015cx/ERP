@@ -34,13 +34,16 @@
                     Header
                 </div>
                 <ul id="demo-list">
+
                     @if(!$userData)
-                        <?php $userData = getUserData()?>
+                        <?php $userData = getUserData();?>
                     @endif
+
                     @foreach($userData['menus'] as $k=>$p_menu )
                         <li>
                             <a href="#">
                                 <i class="{{$p_menu['menu_icon']}}"></i>{{$p_menu['display_name']}} </a>
+
                             @if(is_array($p_menu['sub_menus']))
                                 <ul class="submenu">
                                     @foreach($p_menu['sub_menus'] as $subk=>$submenu)
