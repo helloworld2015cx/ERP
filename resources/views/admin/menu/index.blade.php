@@ -19,14 +19,17 @@
             background-color: #0099FF;
             border: none;
         }
+        .alert-self-define{
+            width:90%;
+            margin:0 auto;
+            margin-top:-10px;
+        }
 
     </style>
 
     @endsection
 
-
 @section('content')
-
     <section class="content-header">
         <h1 style="display: inline-block">
             菜单列表
@@ -41,17 +44,15 @@
             <a href="{{url('admin/menu_manage/create')}}" class="btn btn-primary">新建菜单</a>
             </div>
         </div>
-
     </section>
 
     <div class="content-area">
         <div class="box box-primary">
-            <div class="box-header">
 
+            <div class="box-header">
                 <div class="box-title">
                     菜单展示列表
                 </div>
-
                 <div class="box-tools">
                     <form action="" method="get">
                         <div class="input-group">
@@ -63,8 +64,15 @@
                         </div>
                     </form>
                 </div>
-
             </div>
+
+            @if(Session::has('success'))
+                <div class="alert alert-success alert-dismissible alert-self-define" role="alert">
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <strong>Success ! </strong> {{Session::get('success')}}
+                </div>
+            @endif
+
             <div class="table-responsive">
                 <table class="table table-condensed table-striped">
                     <tr>
@@ -84,15 +92,12 @@
                                 <a class="btn btn-primary btn-sm" href="{{url('admin/menu_manage',['id'=>$menu_value->id])}}">
                                     <i class="fa fa-eye" title="查看" aria-hidden="true"></i>
                                 </a>
-
                                 <a class="btn btn-sm btn-success" href="{{url('admin/menu_manage').'/'.$menu_value->id.'/edit'}}">
                                     <i class="fa fa-pencil-square-o" title="修改" aria-hidden="true"></i>
                                 </a>
-
                                 <a class="btn btn-sm btn-danger delete_item" href="javascript:void(0)">
-                                    <i class="fa fa-trash-o" title="删除" data-id="{{$menu_value->id}}" aria-hidden="true"></i>
+                                    <i class="fa fa-trash-o" title="删除" id="{{$menu_value->id}}" aria-hidden="true"></i>
                                 </a>
-
                                 {{--<i class="fa fa-pencil fa-fw"></i>--}}
                                 {{--<i class=""></i>--}}
                                 {{--<i class="fa fa-trash-o fa-fw"></i>--}}
@@ -128,7 +133,7 @@
     <script src="{{assets('plugins/layer2.3/layer.js')}}"></script>
     <script>
         $('.delete_item').click(function(){
-            var id = $(this).data('id');
+            var id = $(this).find('i').attr('id');
             var action = '{{ url('admin/menu_manage/') }}';
             var new_action = action + '/' + id;
             $('#hidden-delete-form').attr('action', new_action);

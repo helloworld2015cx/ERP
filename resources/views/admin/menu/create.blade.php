@@ -12,6 +12,15 @@
             padding-left:10px;
             padding-right:10px;
         }
+        select>option{
+            padding:5px;
+        }
+        .alert-self-define{
+            width:85%;
+            margin:0 auto;
+            margin-top:-15px;
+        }
+
     </style>
     <link rel="stylesheet" href="{{assets('plugins/icheck/skins/all.css')}}">
     @endsection
@@ -41,8 +50,15 @@
 
             </div>
 
+            @if(Session::has('error'))
+                <div class="alert alert-danger alert-dismissible alert-self-define" role="alert">
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <strong> Fail ! </strong> {{Session::get('error')}}
+                </div>
+            @endif
+
             <div class="form form-create">
-                <form action="" class="form">
+                <form action="{{url('admin/menu_manage')}}" class="form" method="post">
                     <div class="form-group">
                         <div class="row">
                             <div class="col-xs-6">
@@ -81,7 +97,7 @@
                         <div class="row">
                             <div class="col-xs-6 hidden" id="menu_icon_box">
                                 <label for="menu_icon">菜单图标 ( Font Awesome Icon 如: fa fa-user <i class="fa fa-user"></i>)</label>
-                                <input type="text" class="form-control" name="uri" id="menu_icon" placeholder="请输入菜单使用图标">
+                                <input type="text" class="form-control" name="menu_icon" id="menu_icon" placeholder="请输入菜单使用图标">
                             </div>
                             <div class="col-xs-6 hidden" id="menu_uri_box">
                                 <label for="menu_uri">菜单连接URI</label>
@@ -106,6 +122,10 @@
                         </textarea>
                     </div>
 
+                    <div class="form-group">
+                        <button class="btn btn-success" type="submit">提交菜单数据</button>
+                    </div>
+                    {{csrf_field()}}
 
                 </form>
             </div>

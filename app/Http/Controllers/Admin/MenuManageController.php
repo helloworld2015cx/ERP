@@ -63,6 +63,43 @@ class MenuManageController extends Controller
     public function store(Request $request)
     {
         //
+//        dump($request->all());
+        $menu_data = null;
+        if($request->menu_type==1){
+            $menu_data = [
+                'display_name'  =>  e($request->display_name),
+                'menu_name'     =>  e(str_replace(' ','_',$request->menu_name)),
+                'order'         =>  e(intval($request->order)),
+                'desc'          =>  e($request->desc),
+                'menu_icon'     =>  e($request->menu_icon),
+                'creator'       =>  session('user_id'),
+                'create_at'     =>  date('Y-m-d H:i:s'),
+            ];
+        }elseif($request->menu_type==2){
+            $menu_data = [
+                'display_name'  =>  e($request->display_name),
+                'menu_name'     =>  e(str_replace(' ','_',$request->menu_name)),
+                'order'         =>  e(intval($request->order)),
+                'desc'          =>  e($request->desc),
+                'uri'           =>  e($request->uri),
+                'pid'           =>  e($request->pid),
+                'creator'       =>  session('user_id'),
+                'create_at'     =>  date('Y-m-d H:i:s'),
+            ];
+        }
+
+//        dump($menu_data);
+        if($menu_data){
+//            $create = Menus::create($menu_data);
+            $create = true;
+            if($create)
+                return redirect('admin/menu_manage')->with('success','新菜单添加成功！');
+        }
+        $message = '数据保存失败！请检查后重新提交数据！';
+        return redirect()->back()->withInput()->with('error' , $message);
+
+
+
     }
 
     /**
