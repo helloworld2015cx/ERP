@@ -17,18 +17,13 @@ class ShareDataServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        //
-        $data =  Cache::get('current_user');
-
-//        dump(Cache::get('user_id'));
-//        dump(Session::get('user_id'));
-//        dump(session('user_id'));
-
-        if(!$data){
-            $data = User::getUserIdentity(Cache::get('user_id'));
-            Cache::put('current_user' , $data);
-        }
-        view()->share('userData' , $data);
+//        dump('1234567890');
+//        $data =  Cache::get('current_user');
+//        if(!$data){
+//            $data = User::getUserIdentity(Cache::get('user_id'));
+//            Cache::put('current_user' , $data);
+//        }
+//        view()->share('userData' , $data);
 
     }
 

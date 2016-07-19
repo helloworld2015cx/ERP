@@ -19,6 +19,7 @@
 @section('head_js')
     @parent
     <script src="{{assets('plugins/icheck/icheck.min.js')}}"></script>
+    <script src="{{assets('Plugins/ckeditor/ckeditor.js')}}"></script>
     @endsection
 
 @section('content')
@@ -85,7 +86,23 @@
                                 <label for="menu_uri">菜单连接URI</label>
                                 <input type="text" class="form-control" name="uri" placeholder="请输入要连接的URI">
                             </div>
+                            <div class="col-xs-6 hidden" id="menu_parent">
+                                <label for="">父级菜单</label>
+                                <select class="form-control" name="pid" id="menu_pid">
+                                    <option value="" class="form-control">请选择一个父级菜单</option>
+                                    @foreach($Pmenus as $p_key=>$p_value)
+                                        <option class="select form-control" value="{{$p_value['id']}}">{{$p_value['display_name']}}</option>
+                                        @endforeach
+                                </select>
+                            </div>
                         </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="menu_desc">菜单功能描述</label>
+                        {{--<textarea name="desc" id="menu_desc" class="form-control"></textarea>--}}
+                        <textarea style="height:100px" name="desc" id="menu_desc" rows="" cols="" placeholder="请输入菜单简要功能描述......">
+                        </textarea>
                     </div>
 
 
@@ -100,6 +117,7 @@
 
 @section('bottom_js')
 
+    @parent
     <script>
         $(document).ready(function(){
             $('#select_type input').iCheck({
@@ -111,7 +129,7 @@
 
         $first = $('#type_first');
         $second = $('#type_second');
-        
+
         $first.on('ifChecked', function(event){
             $('#menu_icon_box').removeClass('hidden')
         });
@@ -122,11 +140,16 @@
 
         $second.on('ifChecked' , function () {
             $('#menu_uri_box').removeClass('hidden');
+            $('#menu_parent').removeClass('hidden');
         });
 
         $second.on('ifUnchecked' , function () {
             $('#menu_uri_box').addClass('hidden');
+            $('#menu_parent').addClass('hidden');
         });
+
+        CKEDITOR.replace( 'menu_desc' );
+
     </script>
     @endsection
 
