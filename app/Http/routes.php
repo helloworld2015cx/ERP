@@ -54,6 +54,8 @@ Route::group(['prefix'=>'admin' ,'namespace'=>'Admin', 'middleware'=>'login'] , 
 //    Route::get('menu_manage' , "MenuManageController@index");
     Route::resource('menu_manage' , "MenuManageController");
 
+    Route::get('sendmail' , 'MailController@sendmail');
+
 });
 
 //Route::when('*' , function(){
