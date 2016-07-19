@@ -19,7 +19,7 @@
 @section('head_js')
     @parent
     <script src="{{assets('plugins/icheck/icheck.min.js')}}"></script>
-    <script src="{{assets('Plugins/ckeditor/ckeditor.js')}}"></script>
+    <script src="{{assets('plugins/ckeditor/ckeditor.js')}}"></script>
     @endsection
 
 @section('content')
