@@ -18,9 +18,7 @@
 
 @section('head_js')
     @parent
-
     <script src="{{assets('plugins/icheck/icheck.min.js')}}"></script>
-
     @endsection
 
 @section('content')
