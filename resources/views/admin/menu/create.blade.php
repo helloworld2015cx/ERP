@@ -27,9 +27,8 @@
 
 @section('head_js')
     @parent
-
     <script src="{{assets('plugins/icheck/icheck.min.js')}}"></script>
-    <script src="{{assets('Plugins/ckeditor/ckeditor.js')}}"></script>
+    <script src="{{assets('plugins/ckeditor/ckeditor.js')}}"></script>
     @endsection
 
 @section('content')
@@ -42,6 +41,7 @@
             <li><a href=""><i class="fa fa-dashboard"></i> 主页</a></li>
             <li class="active">菜单管理 - 新建菜单</li>
         </ol>
+        <a href="{{url('admin/sendmail')}}" class="">SendMail</a>
     </section>
 
     <div class="content-area">
