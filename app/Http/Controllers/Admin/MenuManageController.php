@@ -104,6 +104,7 @@ class MenuManageController extends Controller
 
     }
 
+
     /**
      * Display the specified resource.
      *
@@ -112,8 +113,9 @@ class MenuManageController extends Controller
      */
     public function show($id)
     {
-        //
-        dump($id);
+        $menu = Menus::with('hasOneParent')->with('hasOneCreator')->find($id);
+
+        return view('admin.menu.show' , compact('menu' , $menu));
     }
 
     /**
@@ -125,8 +127,11 @@ class MenuManageController extends Controller
     public function edit($id)
     {
         //
-
-        dump('This is edit method ! '.$id);
+        $menu = Menus::find($id);
+        $p_menus = Menus::where('pid',0)->get();
+        dump($menu);
+        dump($p_menus);
+//        dump('This is edit method ! '.$id);
 
     }
 
@@ -150,7 +155,30 @@ class MenuManageController extends Controller
      */
     public function destroy($id)
     {
-        //
-        dump(__METHOD__.' is in use '.$id);
+
+        $sub_menus = Menus::find($id)->hasManySubMenus;
+
+        if($sub_menus){
+           $key = 'fail';
+            $message = '所指定的删除菜单尚有子菜单存在，请先删除子菜单，然后再来删除该菜单！';
+        }else{
+            /**
+             * 判断菜单是否有用户在使用，如有，则不允许删除
+             */
+            ///////////////////////////////
+
+            //////////////////////////////
+
+            if(Menus::destroy($id)){
+                $key = 'success';
+                $message = '指定的菜单删除成功！';
+            }else{
+                $key = 'fail';
+                $message = '指定菜单删除失败！';
+            }
+        }
+
+//        dump(__METHOD__.' is in use '.$id);
+        return redirect('admin/menu_manage')->with($key , $message);
     }
 }

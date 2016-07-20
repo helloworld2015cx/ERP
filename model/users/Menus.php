@@ -28,5 +28,10 @@ class Menus extends Model
         return $this->hasOne('Model\\Users\\User' , 'id' , 'creator');
     }
 
+    public function hasManySubMenus(){
+        return $this->hasMany('Model\\Users\\Menus' , 'pid' , 'id');
+    }
+
+
 
 }
