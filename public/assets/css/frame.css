@@ -68,16 +68,25 @@ table,table tr th{
 }
 
 
-
 .left_menu{
     width:19%;
     display: inline-block;
 }
+
+.menu_item_self{
+    padding:10px;  padding-left:40px;  word-spacing: 5px;
+}
+
+
 .show_content{
     /*margin:5px auto;*/
     width:80.7%;
     display: inline-block;
 }
+
+
+
+
 
 .main-content{
     width:100%;

@@ -6,10 +6,15 @@
 
 @section('css')
     @parent
-    <link rel="stylesheet" href="{{assets('css/frame.css')}}">
     <link rel="stylesheet" href="{{assets('plugins/font-awesome/css/font-awesome.min.css')}}">
     <link rel="stylesheet" href="{{assets('plugins/jquery-accordion-menu.css')}}">
     <link rel="stylesheet" href="{{assets('css/zzsc-demo.css')}}">
+    <link rel="stylesheet" href="{{assets('css/frame.css')}}">
+    <style>
+        .submenu-self li a{
+
+        }
+    </style>
     @endsection
 
 @section('head_js')
@@ -45,10 +50,10 @@
                                 <i class="{{$p_menu['menu_icon']}}"></i>{{$p_menu['display_name']}} </a>
 
                             @if(is_array($p_menu['sub_menus']))
-                                <ul class="submenu">
+                                <ul class="submenu submenu-self">
                                     @foreach($p_menu['sub_menus'] as $subk=>$submenu)
                                         <li>
-                                            <a href="{{url($submenu['uri'])}}" class="">{{$submenu['display_name']}}</a>
+                                            <a href="{{url($submenu['uri'])}}" style="padding-top:8px;padding-left:35%;  letter-spacing: 3px;" class="menu_item_self">{{$submenu['display_name']}}</a>
                                         </li>
                                     @endforeach
                                 </ul>

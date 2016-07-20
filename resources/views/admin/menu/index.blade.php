@@ -25,6 +25,10 @@
             margin-top:-10px;
         }
 
+        .page-self{
+            margin:0 auto;
+        }
+
     </style>
 
     @endsection
@@ -112,6 +116,7 @@
                     @endforeach
 
                 </table>
+                <div class="page-self">{{$menus->links()}}</div>
             </div>
         </div>
         {{--<div class="panel panel-info">--}}

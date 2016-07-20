@@ -33,7 +33,8 @@ class MenuManageController extends Controller
         $menus = Menus::select(['id','pid','menu_name','display_name','uri','creator','create_at','update_at'])
             ->with('hasOneCreator')
             ->with('hasOneParent')
-            ->get();//->toArray();
+            ->paginate(10);
+//            ->get();//->toArray();
 
         return view('admin.menu.index' , compact('menus' , $menus));
 
@@ -90,8 +91,8 @@ class MenuManageController extends Controller
 
 //        dump($menu_data);
         if($menu_data){
-//            $create = Menus::create($menu_data);
-            $create = true;
+            $create = Menus::create($menu_data);
+//            $create = true;
             if($create)
                 return redirect('admin/menu_manage')->with('success','新菜单添加成功！');
         }
