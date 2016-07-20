@@ -29,11 +29,12 @@ class MenuManageController extends Controller
      */
     public function index()
     {
+        $pageSize = 10;
         //'id,menu_name,display_name,order,uri,creator,create_at,update_at'
-        $menus = Menus::select(['id','pid','menu_name','display_name','uri','creator','create_at','update_at'])
+        $menus = Menus::select(['id','pid','menu_name','order','display_name','uri','creator','create_at','update_at'])
             ->with('hasOneCreator')
             ->with('hasOneParent')
-            ->paginate(10);
+            ->paginate($pageSize);
 //            ->get();//->toArray();
 
         return view('admin.menu.index' , compact('menus' , $menus));

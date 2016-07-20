@@ -83,7 +83,8 @@
                         <th>操作</th>
                         <th>菜单编号</th>
                         <th>菜单名称</th>
-                        <th>菜单连接</th>
+                        <th>菜单链接</th>
+                        <th>菜单排序</th>
                         <th>上级菜单</th>
                         <th>菜单创建人</th>
                         <th>创建时间</th>
@@ -109,6 +110,7 @@
                             <td style="padding:5px">{{$menu_value->id}}</td>
                             <td style="padding: 5px">{{$menu_value->display_name}}</td>
                             <td style="padding: 5px">{{$menu_value->uri}}</td>
+                            <td style="padding: 5px">{{$menu_value->order}}</td>
                             <td style="padding: 5px">{{$menu_value->hasOneParent ? $menu_value->hasOneParent->display_name:''}}</td>
                             <td style="padding: 5px">{{$menu_value->hasOneCreator ? $menu_value->hasOneCreator->username : ''}}</td>
                             <td style="padding: 5px">{{$menu_value->create_at}}</td>
