@@ -19,6 +19,7 @@ class MenuManageController extends Controller
         if(!can('menu_manage')){
             $this->middleware('access_denied');
         }
+
     }
 
 
@@ -30,12 +31,13 @@ class MenuManageController extends Controller
     public function index()
     {
         $pageSize = 10;
-        //'id,menu_name,display_name,order,uri,creator,create_at,update_at'
+
+
+
         $menus = Menus::select(['id','pid','menu_name','order','display_name','uri','creator','create_at','update_at'])
             ->with('hasOneCreator')
             ->with('hasOneParent')
             ->paginate($pageSize);
-//            ->get();//->toArray();
 
         return view('admin.menu.index' , compact('menus' , $menus));
 
@@ -90,10 +92,8 @@ class MenuManageController extends Controller
             ];
         }
 
-//        dump($menu_data);
         if($menu_data){
             $create = Menus::create($menu_data);
-//            $create = true;
             if($create)
                 return redirect('admin/menu_manage')->with('success','新菜单添加成功！');
         }
@@ -164,7 +164,8 @@ class MenuManageController extends Controller
         $sub_menus = Menus::find($id)->hasManySubMenus->toArray();
 //        dump($sub_menus);
 
-        if($sub_menus){
+        if($sub_menus)
+        {
             $key = 'fail';
             $message = '所指定的删除菜单尚有子菜单存在，请先删除子菜单，然后再来删除该菜单！';
         }else{
@@ -173,7 +174,9 @@ class MenuManageController extends Controller
              */
             $roleMenus = Menus::find($id)->hasRoles;
             $roles = [];
-            if($roleMenus->toArray()) {
+
+            if($roleMenus->toArray())
+            {
                 foreach ($roleMenus as $Key=>$singleMenu) {
                     $roleDetail = $singleMenu->hasOneRole->toArray();
                     $roles[$Key] = $roleDetail['display_name'];
@@ -182,7 +185,9 @@ class MenuManageController extends Controller
                 $key = 'fail';
                 $message = '该菜单目前尚有'.sizeof($roles).'个角色在使用，分别为： '.$rolesHas.' ，请先取消角色下的该菜单权限！';
             }else{
-                if(Menus::destroy($id)){
+
+                if(Menus::destroy($id))
+                {
                     $key = 'success';
                     $message = '指定的菜单删除成功！';
                 }else{

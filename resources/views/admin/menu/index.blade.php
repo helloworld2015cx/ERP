@@ -99,7 +99,7 @@
 
                     @foreach($menus as $menu_key=>$menu_value)
                         <tr>
-                            <td style="padding: 5px">
+                            <td style="padding: 2px">
                                 <a class="btn btn-primary btn-sm" href="{{url('admin/menu_manage',['id'=>$menu_value->id])}}">
                                     <i class="fa fa-eye" title="查看" aria-hidden="true"></i>
                                 </a>
@@ -113,13 +113,13 @@
                                 {{--<i class=""></i>--}}
                                 {{--<i class="fa fa-trash-o fa-fw"></i>--}}
                             </td>
-                            <td style="padding:5px">{{$menu_value->id}}</td>
-                            <td style="padding: 5px">{{$menu_value->display_name}}</td>
-                            <td style="padding: 5px">{{$menu_value->uri}}</td>
-                            <td style="padding: 5px">{{$menu_value->order}}</td>
-                            <td style="padding: 5px">{{$menu_value->hasOneParent ? $menu_value->hasOneParent->display_name:''}}</td>
-                            <td style="padding: 5px">{{$menu_value->hasOneCreator ? $menu_value->hasOneCreator->username : ''}}</td>
-                            <td style="padding: 5px">{{$menu_value->create_at}}</td>
+                            <td style="padding: 2px;padding-top:8px">{{$menu_value->id}}</td>
+                            <td style="padding: 2px;padding-top:8px">{{$menu_value->display_name}}</td>
+                            <td style="padding: 2px;padding-top:8px">{{$menu_value->uri}}</td>
+                            <td style="padding: 2px;padding-top:8px">{{$menu_value->order}}</td>
+                            <td style="padding: 2px;padding-top:8px">{{$menu_value->hasOneParent ? $menu_value->hasOneParent->display_name:''}}</td>
+                            <td style="padding: 2px;padding-top:8px">{{$menu_value->hasOneCreator ? $menu_value->hasOneCreator->username : ''}}</td>
+                            <td style="padding: 2px;padding-top:8px">{{$menu_value->create_at}}</td>
                         </tr>
                     @endforeach
 
