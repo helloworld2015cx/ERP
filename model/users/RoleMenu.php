@@ -19,4 +19,8 @@ class RoleMenu extends Model
         return $this->hasOne('Model\\Users\\Menus' , 'id' , 'menu_id');
     }
 
+    public function hasOneRole(){
+        return $this->hasOne('Model\\Users\\Role' , 'id' , 'role_id');
+    }
+
 }

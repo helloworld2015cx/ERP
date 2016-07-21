@@ -32,6 +32,10 @@ class Menus extends Model
         return $this->hasMany('Model\\Users\\Menus' , 'pid' , 'id');
     }
 
+    public function hasRoles(){
+        return $this->hasMany('Model\\Users\\RoleMenu' , 'menu_id' , 'id');
+    }
+
 
 
 }

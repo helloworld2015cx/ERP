@@ -144,7 +144,12 @@ class MenuManageController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $updateData = $request->all();
+        dump($updateData);
+
+        $target = Menus::find($id);
+        dump($target);
+
     }
 
     /**
@@ -156,29 +161,37 @@ class MenuManageController extends Controller
     public function destroy($id)
     {
 
-        $sub_menus = Menus::find($id)->hasManySubMenus;
+        $sub_menus = Menus::find($id)->hasManySubMenus->toArray();
+//        dump($sub_menus);
 
         if($sub_menus){
-           $key = 'fail';
+            $key = 'fail';
             $message = '所指定的删除菜单尚有子菜单存在，请先删除子菜单，然后再来删除该菜单！';
         }else{
             /**
              * 判断菜单是否有用户在使用，如有，则不允许删除
              */
-            ///////////////////////////////
-
-            //////////////////////////////
-
-            if(Menus::destroy($id)){
-                $key = 'success';
-                $message = '指定的菜单删除成功！';
-            }else{
+            $roleMenus = Menus::find($id)->hasRoles;
+            $roles = [];
+            if($roleMenus->toArray()) {
+                foreach ($roleMenus as $Key=>$singleMenu) {
+                    $roleDetail = $singleMenu->hasOneRole->toArray();
+                    $roles[$Key] = $roleDetail['display_name'];
+                }
+                $rolesHas = join(' , ' , $roles);
                 $key = 'fail';
-                $message = '指定菜单删除失败！';
+                $message = '该菜单目前尚有'.sizeof($roles).'个角色在使用，分别为： '.$rolesHas.' ，请先取消角色下的该菜单权限！';
+            }else{
+                if(Menus::destroy($id)){
+                    $key = 'success';
+                    $message = '指定的菜单删除成功！';
+                }else{
+                    $key = 'fail';
+                    $message = '指定菜单删除失败！';
+                }
             }
         }
 
-//        dump(__METHOD__.' is in use '.$id);
         return redirect('admin/menu_manage')->with($key , $message);
     }
 }

@@ -76,6 +76,12 @@
                     <strong>Success ! </strong> {{Session::get('success')}}
                 </div>
             @endif
+            @if(Session::has('fail'))
+                <div class="alert alert-danger alert-dismissible alert-self-define" role="alert">
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <strong>Fail ! </strong> {{Session::get('fail')}}
+                </div>
+            @endif
 
             <div class="table-responsive">
                 <table class="table table-condensed table-striped">
