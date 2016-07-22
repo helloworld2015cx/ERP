@@ -28,7 +28,6 @@
         .page-self{
             margin:0 auto;
         }
-
     </style>
 
     @endsection
