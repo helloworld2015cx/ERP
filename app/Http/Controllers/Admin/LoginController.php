@@ -27,9 +27,9 @@ class LoginController extends Controller
 
         $find = User::where('username' , $username)->where('password' , md5(md5($password)))->take(1)->get()->toArray();
 
-        if($find){
+        if ($find) {
 
-            session(['user_id'=>$find[0]['id']]);
+            session(['user_id' => $find[0]['id']]);
             Cache::put('user_id' , $find[0]['id'] ,SYSTEM_CACHE_MINUTES);
 
             $userData = User::getUserIdentity($find[0]['id'] );
@@ -38,7 +38,7 @@ class LoginController extends Controller
 
             Cache::put('current_user' , $userData , SYSTEM_CACHE_MINUTES);
 
-        }else{
+        } else {
             return redirect()->back()->withInput(['username'=>$request->input('username')]);
         }
         return redirect('admin');

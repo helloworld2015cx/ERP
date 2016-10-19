@@ -74,7 +74,10 @@ table,table tr th{
 }
 
 .menu_item_self{
-    padding:10px;  padding-left:40px;  word-spacing: 5px;
+    font-size: 14px;
+    letter-spacing: 3px;
+    padding-left:40px;
+    word-spacing: 5px;
 }
 
 

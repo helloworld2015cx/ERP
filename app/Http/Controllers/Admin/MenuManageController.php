@@ -31,15 +31,13 @@ class MenuManageController extends Controller
      */
     public function index(Request $request)
     {
-        $pageSize = 10;
-
         $keyword = $request->get('s_title');
 //        dump($keyword);
         $menus = Menus::select(['id','pid','menu_name','order','display_name','uri','creator','create_at','update_at'])
             ->where('display_name' , 'like' , "%{$keyword}%")
             ->with('hasOneCreator')
             ->with('hasOneParent')
-            ->paginate($pageSize);
+            ->paginate(DEFAULT_PAGE_SIZE);
 
 
         return view('admin.menu.index' , ['menus' => $menus , 'keyword'=>$keyword]);

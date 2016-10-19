@@ -53,7 +53,7 @@
                                 <ul class="submenu submenu-self">
                                     @foreach($p_menu['sub_menus'] as $subk=>$submenu)
                                         <li>
-                                            <a href="{{url($submenu['uri'])}}" style="padding-top:5px;font-size: 14px;color:#00CCFF;padding-left:35%;  letter-spacing: 3px;" class="menu_item_self">{{$submenu['display_name']}}</a>
+                                            <a href="{{url($submenu['uri'])}}" style="padding-left:30%;color:#00CCFF;padding-bottom:7px;padding-top:7px;" class="menu_item_self">{{$submenu['display_name']}}</a>
                                         </li>
                                     @endforeach
                                 </ul>

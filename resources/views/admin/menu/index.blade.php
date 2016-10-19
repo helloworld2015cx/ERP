@@ -40,7 +40,7 @@
             <small><a href="">菜单管理</a></small>
         </h1>
         <ol class="breadcrumb pull-right">
-            <li><a href=""><i class="fa fa-dashboard"></i> 主页</a></li>
+            <li><a href="{{url('admin')}}"><i class="fa fa-dashboard"></i> 主页</a></li>
             <li class="active">菜单管理 - 菜单列表</li>
         </ol>
         <div class="row">

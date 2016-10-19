@@ -40,12 +40,12 @@
             <small><a href="">角色管理</a></small>
         </h1>
         <ol class="breadcrumb pull-right">
-            <li><a href=""><i class="fa fa-dashboard"></i> 主页</a></li>
+            <li><a href="{{url('admin')}}"><i class="fa fa-dashboard"></i> 主页</a></li>
             <li class="active">角色管理 - 角色列表</li>
         </ol>
         <div class="row">
             <div class="col-xs-1 create-btn">
-                <a href="{{url('admin/role_management/create')}}" class="btn btn-primary">新建角色</a>
+                <a href="{{url('admin/role/create')}}" class="btn btn-primary">新建角色</a>
             </div>
         </div>
     </section>
@@ -93,26 +93,23 @@
                         <th>创建时间</th>
                         <th>更新时间</th>
                         <th>简要描述</th>
-                        <th>角色管理菜单</th>
-                        <th>角色用户</th>
+                        <th>查看角色管理菜单</th>
+                        <th>查看角色用户</th>
                     </tr>
 
 
                     @foreach($data as $role_key=>$role_value)
                         <tr>
                             <td style="padding: 2px">
-                                <a class="btn btn-primary btn-sm" href="{{url('admin/role_management',['id'=>$role_value->id])}}">
+                                <a class="btn btn-primary btn-sm" href="{{url('admin/role',['id'=>$role_value->id])}}">
                                     <i class="fa fa-eye" title="查看" aria-hidden="true"></i>
                                 </a>
-                                <a class="btn btn-sm btn-success" href="{{url('admin/role_management').'/'.$role_value->id.'/edit'}}">
+                                <a class="btn btn-sm btn-success" href="{{url('admin/role').'/'.$role_value->id.'/edit'}}">
                                     <i class="fa fa-pencil-square-o" title="修改" aria-hidden="true"></i>
                                 </a>
                                 <a class="btn btn-sm btn-danger delete_item" href="javascript:void(0)">
                                     <i class="fa fa-trash-o" title="删除" id="{{$role_value->id}}" aria-hidden="true"></i>
                                 </a>
-                                {{--<i class="fa fa-pencil fa-fw"></i>--}}
-                                {{--<i class=""></i>--}}
-                                {{--<i class="fa fa-trash-o fa-fw"></i>--}}
                             </td>
                             <td style="padding: 2px;padding-top:8px">{{$role_value->id}}</td>
                             <td style="padding: 2px;padding-top:8px">{{$role_value->display_name}}</td>
@@ -120,8 +117,8 @@
                             <td style="padding: 2px;padding-top:8px">{{$role_value->create_at}}</td>
                             <td style="padding: 2px;padding-top:8px">{{$role_value->update_at}}</td>
                             <td style="padding: 2px;padding-top:8px">{{mb_substr($role_value->describe , 0 , 8)}} ...</td>
-                            <td style="padding: 2px;padding-top:8px">xxx</td>
-                            <td style="padding: 2px;padding-top:8px">xxxx</td>
+                            <td style="padding: 2px;padding-top:8px"><a href="javascript:void(0)" > 角色菜单 </a></td>
+                            <td style="padding: 2px;padding-top:8px"><a href="javascript:void(0)"> 角色用户 </a></td>
                         </tr>
                     @endforeach
 
@@ -129,11 +126,6 @@
                 <div class="page-self">{{$data->links()}}</div>
             </div>
         </div>
-        {{--<div class="panel panel-info">--}}
-        {{--<div class="panel-heading">Heading</div>--}}
-        {{--<div class="panel-body">This is panel body !</div>--}}
-        {{--<div class="panel-footer">Footer</div>--}}
-        {{--</div>--}}
     </div>
     <!--隐藏型删除表单-->
     <form method="post" action="{{ url('admin/role_management/') }}" accept-charset="utf-8" id="hidden-delete-form">
@@ -149,7 +141,7 @@
     <script>
         $('.delete_item').click(function(){
             var id = $(this).find('i').attr('id');
-            var action = '{{ url('admin/role_management/') }}';
+            var action = '{{ url('admin/role/') }}';
             var new_action = action + '/' + id;
             $('#hidden-delete-form').attr('action', new_action);
             layer.confirm('是否确定要删除当前角色，删除之后将无法继续使用。',function(index){
