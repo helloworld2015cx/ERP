@@ -21,7 +21,7 @@ if(!function_exists('assets')){
 
 
 if (!function_exists('user')) {
-    function user($condition){
+    function user($condition) {
 
     }
 }

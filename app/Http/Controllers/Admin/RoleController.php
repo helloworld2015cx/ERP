@@ -10,7 +10,9 @@ namespace App\Http\Controllers\Admin;
 
 
 use App\Http\Controllers\Controller;
-use Illuminate\Support\Facades\Request;
+use Illuminate\Http\Request;
+use Model\Users\Role;
+
 
 class RoleController extends Controller
 {
@@ -25,9 +27,23 @@ class RoleController extends Controller
         }
     }
 
+
     public function index(Request $request)
     {
-        dump('Hello world !');
+        $page_size = 10;
+        $keyword = $request->get('keyword');
+
+        $roles = Role::select(['id' , 'role_name' , 'display_name' , 'create_at' , 'update_at' , 'describe'])
+            ->with('hasManyRoleMenus.hasOneMenu')
+            ->paginate($page_size);
+
+        $raw_data = $roles->toArray();
+
+        return view('admin.role.index' ,
+            [
+                'data'  =>  $roles ,
+                'keyword'=>  $keyword
+            ]);
     }
 
 }
