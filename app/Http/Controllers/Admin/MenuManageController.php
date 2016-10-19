@@ -2,24 +2,25 @@
 
 namespace App\Http\Controllers\Admin;
 
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use Model\Users\Menus;
 use Illuminate\Support\Facades\Cache;
+//use Illuminate\Support\Facades\DB;
 
 class MenuManageController extends Controller
 {
 
 
 
-    public function __init__(){
-//        dump('___Enter Here ____'.__METHOD__);
-        if(!can('menu_manage')){
+    public function __init__()
+    {
+        if (! can('menu_manage')) {
             $this->middleware('access_denied');
         }
-
     }
 
 
@@ -28,18 +29,20 @@ class MenuManageController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
         $pageSize = 10;
 
-
-
+        $keyword = $request->get('s_title');
+//        dump($keyword);
         $menus = Menus::select(['id','pid','menu_name','order','display_name','uri','creator','create_at','update_at'])
+            ->where('display_name' , 'like' , "%{$keyword}%")
             ->with('hasOneCreator')
             ->with('hasOneParent')
             ->paginate($pageSize);
 
-        return view('admin.menu.index' , compact('menus' , $menus));
+
+        return view('admin.menu.index' , ['menus' => $menus , 'keyword'=>$keyword]);
 
 
     }

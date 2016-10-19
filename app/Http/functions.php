@@ -20,38 +20,41 @@ if(!function_exists('assets')){
 }
 
 
-if(!function_exists('user')){
+if (!function_exists('user')) {
     function user($condition){
 
     }
 }
 
-if(!function_exists('can')){
-    function can($menu_name){
-        if($current_user = \Illuminate\Support\Facades\Cache::get('current_user')){
+if (! function_exists('can')) {
+    function can($menu_name)
+    {
+        if ($current_user = \Illuminate\Support\Facades\Cache::get('current_user')){
 //            $allUserMenus = $current_user['menus'];
-        }else{
+        } else {
             $current_user = \Model\Users\User::getUserIdentity(session('user_id'));
         }
 
         $allUserMenus = $current_user['menus'];
 
-        return recursiveFindInArrayByKey($allUserMenus , $menu_name);
+        return recursiveFindInArrayByKey($allUserMenus , trim($menu_name));
     }
 }
 
 if(!function_exists('recursiveFindInArrayByKey')){
 
-    function recursiveFindInArrayByKey($arr , $key){
-
-        foreach($arr as $k=>$value){
-            if($key==$value['menu_name']){
+    function recursiveFindInArrayByKey($arr , $key)
+    {
+        foreach ($arr as $k=>$value) {
+            if ($key == $value['menu_name']) {
                 return true;
-            }else{
-//                dump($value);
-//                exit;
-                if(is_array($value['sub_menus'])){
-                    return recursiveFindInArrayByKey($value['sub_menus'] , $key);
+            } else {
+                if (is_array($value['sub_menus'])) {
+                    if ( recursiveFindInArrayByKey($value['sub_menus'] , $key) ) {
+                        return true;
+                    } else {
+                        continue;
+                    }
                 }
             }
         }
@@ -61,10 +64,10 @@ if(!function_exists('recursiveFindInArrayByKey')){
     }
 }
 
-if(!function_exists('getUserData')){
-    function getUserData($userid=''){
-
-        if(!$userid){
+if (! function_exists('getUserData') ){
+    function getUserData($userid = '' )
+    {
+        if (! $userid) {
             $userid = session('user_id');
         }
 

@@ -17,15 +17,15 @@ class SystemController extends Controller
 
 
     public function __init__(){
-        if(!can('menu_manage')){
+        if ( !can('menu_manage')) {
             $this->middleware('access_denied');
         }
         return true;
-//        return view('');
     }
 
 
-    public function index(){
+    public function index()
+    {
 //        $current_user = User::getUserIdentity(session('user_id'));
 //        dump($current_user);
 //        dump(SYSTEM_CACHE_MINUTES);

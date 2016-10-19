@@ -56,6 +56,8 @@ Route::group(['prefix'=>'admin' ,'namespace'=>'Admin', 'middleware'=>'login'] , 
 
     Route::get('sendmail' , 'MailController@sendmail');
 
+    Route::get('role' , 'RoleController@index');
+
 });
 
 //Route::when('*' , function(){

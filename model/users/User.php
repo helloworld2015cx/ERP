@@ -22,7 +22,8 @@ class User extends Model
      * 定义和角色用户表的关联模型
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
-    public function roleUser(){
+    public function roleUser()
+    {
         return $this->hasMany('Model\\Users\\RoleUser' , 'user_id' , 'id');
     }
 
@@ -32,10 +33,11 @@ class User extends Model
      * @param $userid
      * @return array
      */
-    public static function getUserIdentity($userid){
+    public static function getUserIdentity($userid)
+    {
         $re = static::where('id' , $userid)->first();
 
-        if(!$re){
+        if ( !$re ) {
             return null;
         }
 
@@ -48,7 +50,7 @@ class User extends Model
 
         $roles = [];
         $roleIds = [];
-        foreach($roleUsers as $key=>$role){
+        foreach ($roleUsers as $key=>$role) {
             $roles[$key]['role_id'] = $role->role->id;
             $roleIds[] = $role->role->id;
             $roles[$key]['role_name'] = $role->role->role_name;
@@ -67,11 +69,11 @@ class User extends Model
      * @param $id
      * @return array
      */
-    public static function getMenusByRoleIds($id){
-
-        if(is_array($id)) {
+    public static function getMenusByRoleIds($id)
+    {
+        if (is_array($id)) {
             $raw_menus = RoleMenu::select('menu_id')->whereIn('role_id', $id)->with('hasOneMenu')->get()->toArray();
-        }else{
+        } else {
             $raw_menus = RoleMenu::select('menu_id')->where('role_id', $id)->with('hasOneMenu')->get()->toArray();
         }
 
@@ -79,16 +81,16 @@ class User extends Model
         $mark = [];
         $i=0;
 
-        foreach($raw_menus as $k=>$v){
-            if(in_array($v['menu_id'] , $mark)) continue;
+        foreach ($raw_menus as $k=>$v) {
+            if ( in_array($v['menu_id'] , $mark) ) continue;
             $mark[] = $v['menu_id'];
-            $menus[$i]['menu_id'] = $v['menu_id'];
-            $menus[$i]['pid'] = $v['has_one_menu']['pid'];
-            $menus[$i]['menu_name'] = $v['has_one_menu']['menu_name'];
+            $menus[$i]['menu_id']   =   $v['menu_id'];
+            $menus[$i]['pid']       =   $v['has_one_menu']['pid'];
+            $menus[$i]['menu_name'] =   $v['has_one_menu']['menu_name'];
             $menus[$i]['display_name'] = $v['has_one_menu']['display_name'];
-            $menus[$i]['uri'] = $v['has_one_menu']['uri'];
-            $menus[$i]['menu_icon'] = $v['has_one_menu']['menu_icon'];
-            $menus[$i]['order'] = $v['has_one_menu']['order'];
+            $menus[$i]['uri']       =   $v['has_one_menu']['uri'];
+            $menus[$i]['menu_icon'] =   $v['has_one_menu']['menu_icon'];
+            $menus[$i]['order']     =   $v['has_one_menu']['order'];
             $i++;
         }
         return $menus;
@@ -100,16 +102,16 @@ class User extends Model
      * @param $menus
      * @return array
      */
-    public static function formatMenus($menus){
-
+    public static function formatMenus($menus)
+    {
         $p_menus = [];
         $sub_menus = [];
         $numP = 0;
         $numS = 0;
 
-        foreach($menus as $key=>$value){
+        foreach ($menus as $key=>$value) {
 
-            if($value['pid']==0) {
+            if ($value['pid'] == 0) {
 
                 $p_menus[$numP] = $value;
                 $p_menus[$numP]['sub_menus'] = false;
@@ -124,9 +126,9 @@ class User extends Model
             }
         }
 
-        foreach($sub_menus as $k=>$v){
-            foreach($p_menus as $p_k=>$p_v){
-                if($p_v['menu_id'] == $v['pid']){
+        foreach ($sub_menus as $k=>$v) {
+            foreach ($p_menus as $p_k=>$p_v) {
+                if ($p_v['menu_id'] == $v['pid']) {
                     $p_menus[$p_k]['sub_menus'][] = $v;
                     break;
                 }
@@ -141,12 +143,13 @@ class User extends Model
      * @param $p_menus
      * @return mixed
      */
-    public static function orderMenus($p_menus){
+    public static function orderMenus($p_menus)
+    {
         $order = array_column($p_menus , 'order');
         array_multisort($order , SORT_ASC , SORT_NUMERIC, $p_menus);
 
-        foreach($p_menus as $key=>$sub_menus){
-            if(isset($sub_menus['sub_menus']) && $sub_menus['sub_menus']){
+        foreach ($p_menus as $key=>$sub_menus) {
+            if (isset($sub_menus['sub_menus']) && $sub_menus['sub_menus']) {
                 $p_menus[$key]['sub_menus'] = self::orderMenus($sub_menus['sub_menus']);
             }
         }
